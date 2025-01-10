@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MainController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+
+Route::controller(MainController::class)->group(function () {
+    Route::get('/', 'index');
+    Route::get('/transaksi', 'transaksi');
+    Route::get('/transaksi_detail/{id}', 'transaksi_detail');
 });
